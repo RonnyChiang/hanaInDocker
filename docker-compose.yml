@@ -4,17 +4,29 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    ports:
+      - 3000:3000
     networks:
       - application
     depends_on:
-      - database
-  database:
+      - mongo
+  data:
+    build:
+      context: models/seeds
+      dockerfile: Dockerfile
+    depends_on:
+      - mongo
+    networks:
+      - application
+  mongo:
     image: mongo
-    container_name: mongoContainer
+    container_name: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: expense-tracker
     volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
       - ./mongo_db:/data/db
     ports:
       - 27017:27017
