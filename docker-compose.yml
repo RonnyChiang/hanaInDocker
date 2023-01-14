@@ -9,16 +9,16 @@ services:
     networks:
       - application
     depends_on:
-      - mongo
+      - database
   data:
     build:
       context: models/seeds
       dockerfile: Dockerfile
     depends_on:
-      - mongo
+      - database
     networks:
       - application
-  mongo:
+  database:
     image: mongo
     container_name: mongo
     environment:
