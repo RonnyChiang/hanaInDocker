@@ -6,6 +6,17 @@ services:
       dockerfile: app.Dockerfile
     ports:
       - 3000:3000
+    environment:
+      PORT: 3000
+      NODE_ENV: "development"
+      MONGODB_URI: "mongodb://user1:user1pw@mongo:27017/expense-tracker"
+      SESSION_SECRET: "ThisIsHanaSecret"
+      FACEBOOK_ID: "xxx"
+      FACEBOOK_SECRET: "xxx"
+      FACEBOOK_CALLBACK: "xxx"
+      GOOGLE_CLIENT_ID: "xxx"
+      GOOGLE_CLIENT_SECRET: "xxxy"
+      GOOGLE_CALLBACK: "xxx"
     networks:
       - application
     depends_on:
