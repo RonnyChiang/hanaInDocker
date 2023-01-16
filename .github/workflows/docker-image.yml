@@ -28,6 +28,6 @@ jobs:
         echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
         
     - name: Build the Docker image
-      run: docker build -t ghcr.io/ronnychiang/hanaindocker
+      run: docker build -t ghcr.io/ronnychiang/hanaindocker:latest
     - name: push image to GitHub Container Registry
       run: docker push ghcr.io/ronnychiang/hanaindocker:latest
