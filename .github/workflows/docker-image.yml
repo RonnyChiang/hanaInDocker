@@ -28,6 +28,6 @@ jobs:
 #         echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
         
     - name: Build the Docker image
-      run: docker build -t ghcr.io/${{ env.IMAGE_NAME }} .
+      run: docker build -t ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }} .
     - name: push image to GitHub Container Registry
-      run: docker push ghcr.io/${{ env.IMAGE_NAME }}:latest
+      run: docker push ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
