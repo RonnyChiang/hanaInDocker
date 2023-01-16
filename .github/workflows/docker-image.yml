@@ -7,6 +7,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: $(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
+  IMAGE_USER: $(echo ${{ github.actor }} | tr '[:upper:]' '[:lower:]')
 
 
 jobs:
@@ -28,6 +29,6 @@ jobs:
 #         echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
         
     - name: Build the Docker image
-      run: docker build -t ghcr.io/$(echo ${{ github.actor }} | tr '[:upper:]' '[:lower:]')/${{ env.IMAGE_NAME }} .
+      run: docker build -t ghcr.io/${{ IMAGE_USER }}/${{ env.IMAGE_NAME }} .
     - name: push image to GitHub Container Registry
       run: docker push ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
