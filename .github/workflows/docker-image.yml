@@ -23,13 +23,13 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
         
-    - name: set lower case owner name
-      run: |
-        echo "OWNER_LC=${OWNER,,}" >>${GITHUB_ENV}
-      env:
-        OWNER: '${{ github.actor }}'
+    - name: downcase REPO
+      run: | 
+        echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
+    - name: use REPO
+      run: echo "The value of REPO is:${REPO}"
         
     - name: Build the Docker image
-      run: docker build -t ghcr.io/${{ OWNER }}/${{ github.repository }}
+      run: docker build -t ghcr.io/${{ REPO }}/${{ github.repository }}
     - name: push image to GitHub Container Registry
-      run: docker push ghcr.io/${{ OWNER }}/${{ github.repository }}:latest
+      run: docker push ghcr.io/${{ REPO }}/${{ github.repository }}:latest
