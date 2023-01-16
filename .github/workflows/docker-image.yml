@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]'}}
+  IMAGE_NAME: :$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
 
 
 jobs:
