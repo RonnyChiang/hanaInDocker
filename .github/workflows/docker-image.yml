@@ -28,7 +28,7 @@ jobs:
     
 #     - name: downcase REPO
 #       run: | 
-#         echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
+#         echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV } 
         
     - name: Build the Docker image
       run: docker build -t ghcr.io/${{ env.IMAGE_USER }}/${{ env.IMAGE_NAME }} .
