@@ -35,7 +35,7 @@ jobs:
           context: .
           file: /
           push: true
-          tags: ${{ github.actor }}/${{ github.repository }}:latest
+          tags: ronnychiang/hanaindocker:latest
 
 # env:
 #   REGISTRY: ghcr.io
