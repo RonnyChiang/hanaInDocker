@@ -6,9 +6,10 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: $(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
-  IMAGE_USER: $(echo ${{ github.actor }} | tr '[:upper:]' '[:lower:]')
-
+#   IMAGE_NAME: $(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
+#   IMAGE_USER: $(echo ${{ github.actor }} | tr '[:upper:]' '[:lower:]')
+  IMAGE_NAME: hanaindocker
+  IMAGE_USER: ronnychiang
 
 jobs:
 
