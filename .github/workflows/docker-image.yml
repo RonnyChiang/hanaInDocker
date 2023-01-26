@@ -31,7 +31,8 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: hana_in_docker:latest |
+          tags: |
+            hana_in_docker:latest 
             type=schedule
             type=ref,event=branch
             type=ref,event=tag
