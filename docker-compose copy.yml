@@ -1,8 +1,8 @@
 version: "3.8"
 services:
   server:
-    image: "ghcr.io/ronnychiang/hanaindocker/hana_in_docker:latest"
-    container_name: server
+    build:
+      context: .
     ports:
       - 3000:3000
     environment:
@@ -21,8 +21,9 @@ services:
     depends_on:
       - database
   data:
-    image: "ghcr.io/ronnychiang/hanaindocker/data:latest"
-    container_name: data
+    build:
+      context: models/seeds
+      dockerfile: seed.Dockerfile
     depends_on:
       - database
     networks:
